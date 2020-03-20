@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import { StateProvider } from "./store";
+import { testReducer } from "./reducers";
+
+import TestComponent from "./components/Test";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <StateProvider reducer={testReducer} initialState={{count: 0}}>
+        <h1>Welcome to MEAN Boilerplate!</h1>
+        <TestComponent />
+      </StateProvider>
     </div>
   );
 }
